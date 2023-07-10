@@ -41,7 +41,7 @@
 
 #inicializando o projeto django
 
-<cmd> python manager.py runserver </cmd>
+<cmd> python manage.py runserver </cmd>
 
 #esse comando inicialmente vai exibir uma pagina padrão criada junto com o projeto django onde tem alguns informação sobre o Django
 
