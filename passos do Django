@@ -1,0 +1,76 @@
+#Definir uma pasta para o projeto
+
+#======================================================================================================================================
+#comando para instalação do Django
+
+<cmd> pip install django </cmd>
+
+#======================================================================================================================================
+#comando para criar um projeto django colocamos o ponto no final do comando
+#paraque o projeto seja criado em apenas uma pasta e não criar a subpasta como
+#o mesmo nome do projeto
+
+<cmd> django-admin startproject nomedoprojeto . </cmd>
+
+#======================================================================================================================================
+#comando para criar os Apps, para o django os apps são como modulos que serão
+#adicionado ao sistema
+#como por exemplo para um aplicativo de estoque podemos ter os modulos de produto
+#e o modulo de estoque onde os dois se comunicarão atravez de uma aplicação core (um tipo de main onde fara as comunicação dos apps)
+
+<cmd> django-admin startapp nomedoapp </cmd>
+
+#======================================================================================================================================
+#Criação do super usuario
+#para criarmos o Super usuario do django precisamos rodar o comando
+
+<cmd> python manager.py createsuperuser </cmd>
+
+#após rodar o camando prenchemos as informações do super usuario
+#usuario
+#email
+#senha
+#repetir a senha
+
+#======================================================================================================================================
+
+#após a criação de nossos Apps e necessario incluir o mesmo na inicialização do nosso projeto
+#indo ate o arquivo seting do projeto
+#procurando o trecho de codigo onde esta a inicialização dos app e adicionando os app a este trecho
+#======================================================================================================================================
+
+#inicializando o projeto django
+
+<cmd> python manager.py runserver </cmd>
+
+#esse comando inicialmente vai exibir uma pagina padrão criada junto com o projeto django onde tem alguns informação sobre o Django
+
+#======================================================================================================================================
+
+#Agora podemos Iniciar a trabalhar em nosso projeto
+#podemos inciar criando os models para criação de nossas tabelas no banco de dados
+#os models sera criado da seguinte forma:
+#criaremos uma classe como o nome do app onde vamos declarar os atributos como por exemplo nome, quantidade, preco, ncm e etc...
+#e esses atributos receberar as informações da classe model como por exemplo para o campo nome
+# nome = models.TextFilds(max_legth= 40) essa sintax do django vai criar no banco de dados na tabela produto que e referenciado pelo nome da classe
+#uma coluna com a descrição de nome do tipo texto e que permite ate 40 caracter e como campo obrigatorio
+#para saber mais tipos de models e bom consultar a documentação do Django
+
+#======================================================================================================================================
+#importante após criarmos nossos models criarmos nossas rotas utilizando o arquivo url.py
+#dentro de nossos apps criaremos as rotas paras as paginas do app, sendo assim o formato da rota
+
+path('', produto.home, name='home')
+
+#onde o primeiro paramentro do path indica qual a rota, quando o mesmo esta vazio ('') indica que estamos acessando a root da app
+#o segundo paramentro informa o metodo do models que e responsavel pela a logica do processamento da rota
+# e o terceiro parametro name da um apelido para aquela rota e pode ser utilizado para chamar a mesma dentro de nossas templates
+
+
+#======================================================================================================================================
+
+#agora podemos criar nossos templates, em nosso projeto podemos criar um arquivo base.html onde servirar de template para todas as outras
+#paginas criadas, por exemplo em nosso app produto podemos criar uma pasta chamada templates (esta pasta deve esta escrita exatamente desta forma)
+#pois o Django ira buscar os arquivos das paginas dentro da mesma, apois a criação da pasta templates podemos criar nossas paginas
+#como por exemplo home.html, adicionar.html, editar.html ou como também pode ser criado os forms onde pode ser utilizado para ambas as paginas
+#de adicionar e editar
