@@ -20,6 +20,6 @@ from controlestoque import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('produto.urls')),
-    path('produto/', include('produto.urls'))
+    path('', views.index, name='index'),
+    path('produto/', include('produto.urls'), name='home')
 ]

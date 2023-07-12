@@ -1,27 +1,48 @@
-<!doctype html>
-<html lang="pt-br">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {% extends 'base.html' %}
+    
+    {% block content %}
+  <div class='container'>
+    <h1 class='text-center'>LISTA DE PRODUTOS</h1>
+    <div class="table-responsive">
+      <table class="table table-dark table-striped text-white">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">CODIGO</th>
+            <th scope="col">CODIGO DE BARRAS</th>
+            <th scope="col">NOME</th>
+            <th scope="col">UNIDADE DE MEDIDA</th>
+            <th scope="col">PREÇO</th>
+            <th scope="col">ncm</th>
+            <th scope="col">SALDO ESTOQUE</th>
+            <th scope="col">CATEGORIA</th>
+            <th scope="col">DATA DE CRIAÇÃO</th>
+            <th scope="col">EDITAR</th>
+            <th scope="col">EXCLUIR</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for prod in lista %}
+          <tr class="">
+            <td scope="row"> {{  prod.id  }} </td>
+            <td>{{  prod.codigo  }}</td>
+            <td>{{  prod.ean  }}</td>
+            <td>{{  prod.nome  }}</td>
+            <td>{{  prod.unidademedida  }}</td>
+            <td>{{  prod.preco  }}</td>
+            <td>{{  prod.ncm  }}</td>
+            <td>{{  prod.saldoestoque  }}</td>
+            <td>{{  prod.categoria  }}</td>
+            <td>{{  prod.datacadastro  }}</td>
+            <td><i class="fa fa-pencil text-primary" aria-hidden="true"></i></td>
+            <td><i class="fa fa-trash-o text-danger" aria-hidden="true"></i></td>
 
-    <title>Produto</title>
-  </head>
-  <body>
-    <h1>HOME</h1>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-  </body>
-</html>
+     {% endblock %}
