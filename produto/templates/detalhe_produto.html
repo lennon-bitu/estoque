@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="table-responsive container bg-light text-dark">
+    <table class="table">
+      <tbody>
+        <tr class="text-center">
+            <h4 class='text-center'>{{  produto.nome  }}</h4>
+          </tr>
+        <tr class="">
+          <td scope="row"><strong>Preço</strong></td>
+          <td><span>R$: {{  produto.preco  }} </span></td>
+        </tr>
+        <tr class="">
+          <td scope="row"><strong>Código:</strong></td>
+          <td><span> {{  produto.codigo }} </span></td>
+        </tr>
+        <tr class="">
+          <td scope="row"><strong>EAN: </strong></td>
+          <td><span> {{  produto.ean  }} </span></td>
+        </tr>
+        <tr class="">
+          <td scope="row"><strong>Unidade de Médida: </strong></td>
+          <td><span> {{  produto.unidademedida  }} </span></td>
+        </tr>
+        <tr class="">
+          <td scope="row"><strong>Categoria: </strong></td>
+          <td><span> {{  produto.categoria  }} </span></td>
+        </tr>
+        <tr class="">
+          <td scope="row"><strong>NCM: </strong></td>
+          <td><span> {{  produto.ncm  }} </span></td>
+        </tr>
+        <tr class="">
+          <td scope="row"><strong>Saldo Estoque: </strong></td>
+          <td><span> {{  produto.saldoestoque  }} </span></td>
+        </tr>
+        <tr class="">
+          <td scope="row"><strong>Cadastro: </strong></td>
+          <td><span> {{  produto.datacadastro }} </span></td>
+        </tr>
+        <tr class="">
+          {% if produto.ativo %}
+          <td scope="row"><strong>Ativo: </strong></td>
+          <td><span> <i class="fa fa-check-circle-o ok text-success" aria-hidden="true"></i> </span></td>
+          {% else %}
+          <td scope="row"><strong>Ativo: </strong></td>
+          <td><span><i class="fa fa-minus-circle no text-danger" aria-hidden="true"></i> </span></td>
+          {% endif %}
+         
+        </tr>
+      </tbody>
+    </table>
+    <div class="footer">
+        <a href="{% url 'produto:datalhe_produto'  produto.id %}"><i class="fa fa-pencil btn btn-primary" aria-hidden="true"></i></a>
+        <i class="fa fa-trash-o btn btn-danger" aria-hidden="true"></i>
+        <i class="fa fa-dropbox btn btn-warning" aria-hidden="true"></i>
+        <a href="{% url 'produto:home' %}"><i class="fa fa-sign-out btn btn-secondary" aria-hidden="true" data-bs-dismiss="modal"></i></a>
+      </div>
+  </div>
+{% endblock content %}

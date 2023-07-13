@@ -2,24 +2,24 @@
     {% extends 'base.html' %}
     
     {% block content %}
-  <div class='container'>
-    <h1 class='text-center'>LISTA DE PRODUTOS</h1>
+  <div class='' style="height: 100px; background-color: #ffffff;">
+    <h1 class='text-center text-dark'>PRODUTOS</h1>
     <div class="table-responsive">
-      <table class="table table-dark table-striped text-white">
+      <table class="table table-light table-striped">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">CODIGO</th>
-            <th scope="col">CODIGO DE BARRAS</th>
-            <th scope="col">NOME</th>
-            <th scope="col">UNIDADE DE MEDIDA</th>
-            <th scope="col">PREÇO</th>
-            <th scope="col">ncm</th>
-            <th scope="col">SALDO ESTOQUE</th>
-            <th scope="col">CATEGORIA</th>
-            <th scope="col">DATA DE CRIAÇÃO</th>
-            <th scope="col">EDITAR</th>
-            <th scope="col">EXCLUIR</th>
+            <th scope="col">id</th>
+            <th scope="col">Código</th>
+            <th scope="col">Código de Barras</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Unidade de Médida</th>
+            <th scope="col">Preço</th>
+            <th scope="col">NCM</th>
+            <th scope="col">Saldo Estoque</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Data Criação</th>
+            <th scope="col">ativo</th>
+            <th scope="col">ação</th>
           </tr>
         </thead>
         <tbody>
@@ -35,14 +35,103 @@
             <td>{{  prod.saldoestoque  }}</td>
             <td>{{  prod.categoria  }}</td>
             <td>{{  prod.datacadastro  }}</td>
-            <td><i class="fa fa-pencil text-primary" aria-hidden="true"></i></td>
-            <td><i class="fa fa-trash-o text-danger" aria-hidden="true"></i></td>
-
+            {% if prod.ativo %}
+            <td><i class="fa fa-check-circle-o ok text-success" aria-hidden="true"></i></td>
+            {% else %}
+            <td><i class="fa fa-minus-circle no text-danger" aria-hidden="true"></i></td>
+            {% endif %}
+            <!-- Button trigger modal -->
+            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#static{{  prod.id  }}"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
   </div>
+
+  {% for prod in  lista %}
+  
+  
+
+    <!-- Modal -->
+    <div class="modal fade" id="static{{  prod.id  }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-info" id="staticBack{{  prod.id  }}">{{  prod.nome  }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class='container'>
+              <div class="card text-center text-info">
+                
+                <div class="card-body">
+                  <h4 class="card-title">{{  prod.nome  }}</h4>
+
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tbody>
+                        <tr class="">
+                          <td scope="row"><strong>Preço</strong></td>
+                          <td><span>R$: {{  prod.preco  }} </span></td>
+                        </tr>
+                        <tr class="">
+                          <td scope="row"><strong>Código:</strong></td>
+                          <td><span> {{  prod.codigo }} </span></td>
+                        </tr>
+                        <tr class="">
+                          <td scope="row"><strong>EAN: </strong></td>
+                          <td><span> {{  prod.ean  }} </span></td>
+                        </tr>
+                        <tr class="">
+                          <td scope="row"><strong>Unidade de Médida: </strong></td>
+                          <td><span> {{  prod.unidademedida  }} </span></td>
+                        </tr>
+                        <tr class="">
+                          <td scope="row"><strong>Categoria: </strong></td>
+                          <td><span> {{  prod.categoria  }} </span></td>
+                        </tr>
+                        <tr class="">
+                          <td scope="row"><strong>NCM: </strong></td>
+                          <td><span> {{  prod.ncm  }} </span></td>
+                        </tr>
+                        <tr class="">
+                          <td scope="row"><strong>Saldo Estoque: </strong></td>
+                          <td><span> {{  prod.saldoestoque  }} </span></td>
+                        </tr>
+                        <tr class="">
+                          <td scope="row"><strong>Cadastro: </strong></td>
+                          <td><span> {{  prod.datacadastro }} </span></td>
+                        </tr>
+                        <tr class="">
+                          {% if prod.ativo %}
+                          <td scope="row"><strong>Ativo: </strong></td>
+                          <td><span> <i class="fa fa-check-circle-o ok text-success" aria-hidden="true"></i> </span></td>
+                          {% else %}
+                          <td scope="row"><strong>Ativo: </strong></td>
+                          <td><span><i class="fa fa-minus-circle no text-danger" aria-hidden="true"></i> </span></td>
+                          {% endif %}
+                         
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+          
+          </div>
+          </div>
+          <div class="modal-footer">
+            <a href="{% url 'produto:datalhe_produto'  prod.id %}"><i class="fa fa-pencil btn btn-primary" aria-hidden="true"></i></a>
+            <i class="fa fa-trash-o btn btn-danger" aria-hidden="true"></i>
+            <i class="fa fa-dropbox btn btn-warning" aria-hidden="true"></i>
+            <i class="fa fa-sign-out btn btn-secondary" aria-hidden="true" data-bs-dismiss="modal"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  {% endfor %}
 
      {% endblock %}
