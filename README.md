@@ -7,7 +7,7 @@
 - 1
 . :beginner: Produto
     - :beginner: cadastrar
-    -:pushpin: editar
+    - :pushpin: editar
     - :pushpin: deletar
     - :white_check_mark: Listar
 
@@ -17,7 +17,7 @@
     - :pushpin: editar
     - :pushpin: deletar
     - :pushpin: Listar
-    
+
 - 3
  . :pushpin: estoque
     - :pushpin: Entrada
@@ -28,6 +28,7 @@
 ### =================================
 ### 1
  - comando para instalação do Django (com o caminha do projeto aberto e a dentro do ambiente virtual ) execute o comando
+
  <code> pip install django </code>
 
 ### =================================
