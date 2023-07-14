@@ -26,7 +26,7 @@ def add(request):
     else: 
         cod = request.POST.get('codigo')
         codbarras = request.POST.get('codigobarras')
-        nome1 = request.POST.get('nome')
+        nome = request.POST.get('nome')
         unidademedida =  int(request.POST.get('unidademedida'))
         preco = request.POST.get('preco')
         ncm = request.POST.get('ncm')
@@ -45,7 +45,7 @@ def add(request):
         
         if prod:
             return HttpResponse('Codigo Já cadastrado')
-        produto = Produto.objects.create(codigo=cod, ean=codbarras, nome=nome1,
+        produto = Produto.objects.create(codigo=cod, ean=codbarras, nome=nome,
                                          unidademedida_id=unidademedida, preco=preco,
                                          ncm=ncm, saldoestoque=saldo, categoria_id=categoria, 
                                          ativo=ativo)
@@ -73,7 +73,9 @@ def editar(request, pk):
         preco = float(preco.replace(',', '.'))
         ncm = request.POST.get('ncm')
         saldo = request.POST.get('saldo')
-        categoria =  int(request.POST.get('categoria'))
+        categoria =  request.POST.get('categoria')
+        cat = Categoria.objects.get(nome=categoria)
+        categoria =  cat.pk
         
         ativo = request.POST.get('ativo')
         if ativo == 'on':

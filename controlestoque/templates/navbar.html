@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto justify-content-end col-lg-7 col-md-5">
           <li class="nav-item">
             <a class="nav-link text-light" aria-current="page" href="{% url 'index' %}"><i class="fa fa-home" aria-hidden="true"> Home</i> </a>
           </li>
@@ -16,6 +16,11 @@
           <li class="nav-item">
             <a class="nav-link text-light" href="#"><i class="fa fa-dropbox" aria-hidden="true"> Estoque </i> </a>
           </li>
+        </ul>
+
+        <ul class="navbar-nav justify-content-end col-lg-5 col-md-5"> 
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"><i class="fa fa-user btn btn-secondary" aria-hidden="true"> Login </i> </a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"><i class="fa fa-sign-out btn btn-secondary" aria-hidden="true"> logout </i></a></li>
         </ul>
       </div>
     </div>
