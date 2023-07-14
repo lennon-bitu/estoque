@@ -1,54 +1,52 @@
 # estoque
-# ======================================================================================================================================
-# 1
+### Este mini projeto tem como ideia um controle de estoque onde teremos:
+### um cadastro de produtos, cadastro de ajuste no estoque, cadastro de Usuários
+### o Usuário precisara esta logado no sistema para fazer fazer as perações de cadastro e alterações
 
-# comando para instalação do Django
+## fitures do sistema
+- 1
+. :beginner: Produto
+    - :beginner: cadastrar
+    -:pushpin: editar
+    - :pushpin: deletar
+    - :white_check_mark: Listar
 
-# <cmd> pip install django </cmd>
+ - 2
+ . :pushpin: Usuário
+    - :pushpin: cadastrar
+    - :pushpin: editar
+    - :pushpin: deletar
+    - :pushpin: Listar
+    
+- 3
+ . :pushpin: estoque
+    - :pushpin: Entrada
+    - :pushpin: Saida
+    - :pushpin: Inventario
+    - :pushpin: Listar
 
-# ======================================================================================================================================
-# 2
+### =================================
+### 1
+ - comando para instalação do Django (com o caminha do projeto aberto e a dentro do ambiente virtual ) execute o comando
+ <code> pip install django </code>
 
-# comando para criar um projeto django colocamos o ponto no final do comando
-# paraque o projeto seja criado em apenas uma pasta e não criar a subpasta como
-# o mesmo nome do projeto
+### =================================
+### 2
 
-<code> django-admin startproject nomedoprojeto . </code>
-
-# ======================================================================================================================================
-# 3
-
-# comando para criar os Apps, para o django os apps são como modulos que serão
-# adicionado ao sistema
-# como por exemplo para um aplicativo de estoque podemos ter os modulos de produto
-# e o modulo de estoque onde os dois se comunicarão atravez de uma aplicação core (um tipo de main onde fara as comunicação dos apps)
-
-<code> django-admin startapp nomedoapp </code>
-
-# ======================================================================================================================================
-# 4
-
-# Criação do super usuario
-# para criarmos o Super usuario do django precisamos rodar o comando
+- Criação do super usuario
+- para criarmos o Super usuario do django precisamos rodar o comando no terminal
 
 <code> python manager.py createsuperuser </code>
 
-# após rodar o camando prenchemos as informações do super usuario
-# usuario
-# email
-# senha
-# repetir a senha
+- após rodar o camando prenchemos as informações do super usuario
+. usuario
+. email
+. senha
+. repetir a senha
 
-# ======================================================================================================================================
-# 5
+### =================================
+### 3
 
-# após a criação de nossos Apps e necessario incluir o mesmo na inicialização do nosso projeto
-# indo ate o arquivo seting do projeto
-# procurando o trecho de codigo onde esta a inicialização dos app e adicionando os app a este trecho
-# ======================================================================================================================================
-# 6
-# inicializando o projeto django
+- inicializando o projeto django
 
 <code> python manage.py runserver </code>
-
-# esse comando inicialmente vai exibir uma pagina padrão criada junto com o projeto django onde tem alguns informação sobre o Django
