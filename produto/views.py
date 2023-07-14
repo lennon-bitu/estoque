@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -51,9 +52,46 @@ def add(request):
         produto.save()
         
         return HttpResponse('produto cadastrado com sucesso')
+   
     
-
-
+def editar(request, pk):
+    if request.method == 'GET':
+        template_name = 'editar.html'
+        categ = Categoria.objects.all()
+        und = Unidademedida.objects.all()
+        obj = Produto.objects.get(pk=pk)
+        context = {'produto': obj,'categoria': categ, 'unidade':und}
+        return render(request,  template_name, context )
+    else:
+        obj = Produto.objects.all()
+        context = {'produto': obj}
+        cod = request.POST.get('codigo')
+        codbarras = request.POST.get('codigobarras')
+        nome = request.POST.get('nome')
+        unidademedida =  int(request.POST.get('unidademedida'))
+        preco = request.POST.get('preco')
+        preco = float(preco.replace(',', '.'))
+        ncm = request.POST.get('ncm')
+        saldo = request.POST.get('saldo')
+        categoria =  int(request.POST.get('categoria'))
+        
+        ativo = request.POST.get('ativo')
+        if ativo == 'on':
+            ativo = True
+        else:
+            ativo = False
+        prod = Produto.objects.filter(pk=pk).first()
+        if prod:
+            produto =  Produto.objects.filter(pk=pk).update(codigo=cod, ean=codbarras, nome=nome,
+                                            unidademedida_id=unidademedida, preco=preco,
+                                            ncm=ncm, saldoestoque=saldo, categoria_id=categoria, 
+                                           ativo=ativo)
+            #produto = Produto.objects.filter(pk=pk)
+            #produto.save()
+            
+        return redirect('/produto/')
+        
+        
 def datalhe_produto(request, pk):
     template_name = 'detalhe_produto.html'
     obj = Produto.objects.get(pk=pk)

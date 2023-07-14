@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
     {% block content %}
     
-    <form action=" {% url 'produto:incluir' %} " method='POST'>
+    <form action=" {% url 'produto:editar' produto.id %} " method='POST'>
       {% csrf_token %}
       
       <div class='container'>
@@ -11,17 +11,17 @@
           <input type="number" class="form-control" value="{{ produto.codigo }}" name='codigo' aria-label="codigo" aria-describedby="basic-codigo">
 
           <span class="input-group-text" id="basic-codigobarras"><i class="fa fa-barcode" aria-hidden="true"></i></span>
-          <input type="number" class="form-control" placeholder="codigobarras" name='codigobarras' aria-label="codigobarras" aria-describedby="basic-codigobarras">
+          <input type="number" class="form-control" value="{{ produto.ean }}" placeholder="codigobarras" name='codigobarras' aria-label="codigobarras" aria-describedby="basic-codigobarras">
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-nome"><i class="fa fa-tags" aria-hidden="true"></i></span>
-          <input type="text" class="form-control" placeholder="nome" name='nome' aria-label="nome" aria-describedby="basic-nome">
+          <input type="text" class="form-control" placeholder="nome" value="{{ produto.nome }}" name='nome' aria-label="nome" aria-describedby="basic-nome">
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-categoria"><i class="fa fa-list" aria-hidden="true"></i></span>
-          <select class="form-control" aria-label="categoria" name='categoria' aria-describedby="basic-categoria">
+          <select class="form-control" aria-label="categoria" name='categoria' value="{{ produto.categoria }}" aria-describedby="basic-categoria">
             {% for categ in categoria %}
             <option velue="{{categ.id }}">{{ categ.id}}</option>
             {% endfor %}
@@ -29,7 +29,7 @@
           </select >
 
           <span class="input-group-text" id="basic-unidademedida"><i class=""><sup>UNIDADE</sup></i></span>
-          <select class="form-control" aria-label="unidademedida" name='unidademedida' aria-describedby="basic-unidademedida">
+          <select class="form-control" aria-label="unidademedida" name='unidademedida' value="{{ produto.unidademedida }}" aria-describedby="basic-unidademedida">
             {% for und in unidade %}
             <option velue="{{ und.id }}">{{ und.id }}</option>
             {% endfor %}
@@ -39,14 +39,14 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-preco"><i class="fa fa-dollar"></i></span>
-          <input type="number" class="form-control" placeholder="preco" name='preco' aria-label="preco" aria-describedby="basic-preco">
+          <input type="text" class="form-control" value="{{produto.preco}}" name='preco' aria-label="preco" aria-describedby="basic-preco">
 
           <span class="input-group-text" id="basic-ncm"><i class="" aria-hidden="true"><sup>NCM</sup></i></span>
-          <input type="text" class="form-control" placeholder="ncm" name='ncm' aria-label="ncm" aria-describedby="basic-ncm">
+          <input type="text" class="form-control" placeholder="ncm" name='ncm' aria-label="ncm" value="{{ produto.ncm }}" aria-describedby="basic-ncm">
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-saldo"><i class="fa fa-dropbox" aria-hidden="true"></i></span>
-          <input type="number" class="form-control" placeholder="saldo" aria-label="saldo" name='saldo' aria-describedby="basic-saldo">
+          <input type="number" class="form-control" placeholder="saldo" aria-label="saldo" name='saldo' value="{{ produto.saldoestoque }}" aria-describedby="basic-saldo">
           <span class="input-group-text" id="basic-ativo"><i class="fa fa-check-circle-o" aria-hidden="true"><input class="form-control form-check-input" name='ativo' type="checkbox" id="ativo" checked></i></span>
           
           <label class="form-control" for="ativo">
