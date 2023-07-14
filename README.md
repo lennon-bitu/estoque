@@ -3,7 +3,7 @@
 ### um cadastro de produtos, cadastro de ajuste no estoque, cadastro de Usuários
 ### o Usuário precisara esta logado no sistema para fazer fazer as perações de cadastro e alterações
 
-## fitures do sistema
+## funcionalidades do sistema
 - 1
 . :beginner: Produto
     - :beginner: cadastrar
