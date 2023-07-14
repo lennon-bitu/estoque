@@ -18,23 +18,23 @@ def add(request):
         categ = Categoria.objects.all()
         und = Unidademedida.objects.all()
         prod = Produto.objects.all()
-        indice = len(prod) - 1
+        ultimonum = len(prod) + 1
         
-        untimoProdCad = prod[indice]
-        
-        context = {'produto':untimoProdCad, 'categoria': categ, 'unidade':und}
+        context = {'ultimonum':ultimonum, 'categoria': categ, 'unidade':und}
         #return HttpResponse(untimoProdCad.codigo)
         return render(request,  template_name, context )
     else: 
         cod = request.POST.get('codigo')
         codbarras = request.POST.get('codigobarras')
-        nome = request.POST.get('nome')
+        nome1 = request.POST.get('nome')
         unidademedida =  int(request.POST.get('unidademedida'))
         preco = request.POST.get('preco')
         ncm = request.POST.get('ncm')
         saldo = request.POST.get('saldo')
-        categoria =  int(request.POST.get('categoria'))
-        
+        categoria =  request.POST.get('categoria')
+        cat = Categoria.objects.get(nome=categoria)
+        categoria =  cat.pk
+    
         ativo = request.POST.get('ativo')
         if ativo == 'on':
             ativo = True
@@ -45,13 +45,14 @@ def add(request):
         
         if prod:
             return HttpResponse('Codigo Já cadastrado')
-        produto = Produto.objects.create(codigo=cod, ean=codbarras, nome=nome,
+        produto = Produto.objects.create(codigo=cod, ean=codbarras, nome=nome1,
                                          unidademedida_id=unidademedida, preco=preco,
                                          ncm=ncm, saldoestoque=saldo, categoria_id=categoria, 
                                          ativo=ativo)
         produto.save()
         
-        return HttpResponse('produto cadastrado com sucesso')
+        #return HttpResponse(cat.pk)
+        return redirect('/produto/')
    
     
 def editar(request, pk):
@@ -64,7 +65,6 @@ def editar(request, pk):
         return render(request,  template_name, context )
     else:
         obj = Produto.objects.all()
-        context = {'produto': obj}
         cod = request.POST.get('codigo')
         codbarras = request.POST.get('codigobarras')
         nome = request.POST.get('nome')
@@ -91,7 +91,13 @@ def editar(request, pk):
             
         return redirect('/produto/')
         
-        
+def deletar(request, pk):
+    prod = Produto.objects.filter(pk=pk).first()
+    if prod:
+        produto =  Produto.objects.filter(pk=pk).delete()
+    return redirect('/produto/')
+     
+            
 def datalhe_produto(request, pk):
     template_name = 'detalhe_produto.html'
     obj = Produto.objects.get(pk=pk)

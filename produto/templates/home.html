@@ -130,7 +130,7 @@
           </div>
           <div class="modal-footer">
             <a href="{% url 'produto:editar'  prod.id %}"><i class="fa fa-pencil btn btn-primary" aria-hidden="true"></i></a>
-            <i class="fa fa-trash-o btn btn-danger" aria-hidden="true"></i>
+            <a href="{% url 'produto:deletar'  prod.id %}"><i class="fa fa-trash-o btn btn-danger" aria-hidden="true"></i></a>
             <i class="fa fa-dropbox btn btn-warning" aria-hidden="true"></i>
             <i class="fa fa-sign-out btn btn-secondary" aria-hidden="true" data-bs-dismiss="modal"></i>
           </div>
