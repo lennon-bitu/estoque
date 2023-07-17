@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+    {% block content %}
+    
+    <form action=" {% url 'usuario:cadastar_usuario' %} " method='POST'>
+      {% csrf_token %}
+      
+      <div class='container'>
+        <h3 calss='text-center'>Cadastrar Usuario</h3>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-username"><i class="fa fa-user" aria-hidden="true"></i></span>
+          <input type="text" class="form-control" placeholder='Nome de Usuario' name='username' aria-label="username" aria-describedby="basic-username">
+
+          <span class="input-group-text" id="basic-senha"> <i class="fa fa-asterisk" aria-hidden="true"></i> </span>
+          <input type="password" class="form-control" name='senha' aria-label="senha" aria-describedby="basic-senha">
+
+          <span class="input-group-text" id="basic-confirmasenha"> <i class="fa fa-asterisk" aria-hidden="true"></i> </span>
+          <input type="password" class="form-control" name='confirmasenha' aria-label="confirmasenha" aria-describedby="basic-confirmasenha">
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-email"><i aria-hidden="true">@</i></span>
+            <input type="email" class="form-control" placeholder='Email' name='email' aria-label="email" aria-describedby="basic-email">
+   
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-primeironome"><i class="fa fa-user" aria-hidden="true"></i></span>
+            <input type="text" class="form-control" placeholder="Primeiro Nome" name='primeironome' aria-label="primeironome" aria-describedby="basic-primeironome">
+
+            <span class="input-group-text" id="basic-sobrenome"><i class="fa fa-user" aria-hidden="true"></i></span>
+            <input type="text" class="form-control" placeholder="Sobrenome" name='sobrenome' aria-label="sobrenome" aria-describedby="basic-sobrenome">
+        </div>
+
+        <div class="input-group mb-3">
+          <button type="submit" class="form-control btn btn-primary">Salvar</button>
+          <a href="{% url 'usuario:usuario_list' %}" class="form-control btn btn-warning">cancelar</a>
+          
+        </div>
+        
+
+      </div>
+    </form>
+    
+    {% endblock content %}

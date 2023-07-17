@@ -18,7 +18,8 @@ def add(request):
         categ = Categoria.objects.all()
         und = Unidademedida.objects.all()
         prod = Produto.objects.all()
-        ultimonum = len(prod) + 1
+        indice = len(prod) - 1
+        ultimonum = int(prod[indice].codigo) + 1
         
         context = {'ultimonum':ultimonum, 'categoria': categ, 'unidade':und}
         #return HttpResponse(untimoProdCad.codigo)
@@ -27,13 +28,18 @@ def add(request):
         cod = request.POST.get('codigo')
         codbarras = request.POST.get('codigobarras')
         nome = request.POST.get('nome')
-        unidademedida =  int(request.POST.get('unidademedida'))
         preco = request.POST.get('preco')
         ncm = request.POST.get('ncm')
         saldo = request.POST.get('saldo')
+        #faz a busca do nome da unidade de medida e pega seu id para salvar na chave estrangeira no produto
+        unidademedida =  request.POST.get('unidademedida')
+        uni = Unidademedida.objects.get(nome=unidademedida)
+        unidademedida = uni.pk
+        
         categoria =  request.POST.get('categoria')
         cat = Categoria.objects.get(nome=categoria)
         categoria =  cat.pk
+        
     
         ativo = request.POST.get('ativo')
         if ativo == 'on':

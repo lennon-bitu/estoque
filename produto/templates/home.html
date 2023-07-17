@@ -3,9 +3,23 @@
     
     {% block content %}
   <div class='' style="height: 100px; background-color: #ffffff;">
-    <div class='row'>
-      <div class="col-md-10 col-sm-10 col-lg-10"><h1 class='text-center text-dark'>PRODUTOS</h1></div>
-      <div class="col-md-2 col-sm-2 col-lg-2 mt-3"><a href="{% url 'produto:incluir' %}"><i class="fa fa-plus-circle btn btn-outline-primary" aria-hidden="true"> Adicionar</i> </a></div>
+    <div class='col'>
+      <div class="col-md-12 col-sm-12 col-lg-12"><h1 class='text-center text-dark'>PRODUTOS</h1></div>
+      <div class="col-md-12 col-sm-12 col-lg-12 mr-3">
+        
+        <div class='d-flex justify-content-between align-items-center'>
+          <a href="{% url 'produto:incluir' %}" class=''><i class="fa fa-plus-circle btn btn-outline-primary " aria-hidden="true"> Adicionar</i> </a>
+          <form class="row g-3">
+            <div class="col-auto">
+              <input type="password" class="form-control" name='buscar' id="buscar" placeholder="Buscar ...">
+            </div>
+            <div class="col-auto ">
+              <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+          </form>
+          </div>
+        
+      </div>
 
     </div>
     
@@ -32,7 +46,7 @@
         <tbody>
           {% for prod in lista %}
           <tr class="">
-            <td scope="row"> {{  prod.id  }} </td>
+            <td scope=""> {{  prod.id  }} </td>
             <td>{{  prod.codigo  }}</td>
             <td>{{  prod.ean  }}</td>
             <td>{{  prod.nome  }}</td>
@@ -51,8 +65,19 @@
             <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#static{{  prod.id  }}"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
           </tr>
           {% endfor %}
-          <tr >
-            <td> .</td>
+          <tr class='text-light'>
+            <td scope=""> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
           </tr>
         </tbody>
       </table>

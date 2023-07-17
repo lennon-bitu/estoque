@@ -31,7 +31,7 @@
           <span class="input-group-text" id="basic-unidademedida"><i class=""><sup>UNIDADE</sup></i></span>
           <select class="form-control" aria-label="unidademedida" name='unidademedida' aria-describedby="basic-unidademedida">
             {% for und in unidade %}
-            <option velue="{{ und.id }}">{{ und.id }}</option>
+            <option velue="{{ und.id }}">{{ und.nome }}</option>
             {% endfor %}
             
           </select >
@@ -46,7 +46,7 @@
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-saldo"><i class="fa fa-dropbox" aria-hidden="true"></i></span>
-          <input type="number" class="form-control" placeholder="saldo" aria-label="saldo" name='saldo' aria-describedby="basic-saldo">
+          <input type="number" class="form-control" placeholder="saldo" aria-label="saldo" name='saldo' value='0' aria-describedby="basic-saldo" readonly>
           <span class="input-group-text" id="basic-ativo"><i class="fa fa-check-circle-o" aria-hidden="true"><input class="form-control form-check-input" name='ativo' type="checkbox" id="ativo" checked></i></span>
           
           <label class="form-control" for="ativo">

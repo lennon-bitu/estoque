@@ -5,20 +5,23 @@
 
 ## funcionalidades do sistema
 - 1
+    - views criadas usando fbv (function basic view)
 . :beginner: Produto
-    - :beginner: cadastrar
-    - :pushpin: editar
-    - :pushpin: deletar
+    - :white_check_mark: cadastrar
+    - :white_check_mark: editar
+    - :white_check_mark: deletar
     - :white_check_mark: Listar
 
  - 2
- . :pushpin: Usuário
+    - views criadas usando cbv (class basic view)
+ . :beginner: Usuário
     - :pushpin: cadastrar
     - :pushpin: editar
     - :pushpin: deletar
     - :pushpin: Listar
 
 - 3
+    - views criadas usando cbv (class basic view)
  . :pushpin: estoque
     - :pushpin: Entrada
     - :pushpin: Saida

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="table-responsive container bg-light text-dark">
+    <table class="table">
+      <tbody>
+        <tr class="text-center">
+            <h4 class='text-center text-info'>{{  usuario.username  }}</h4>
+          </tr>
+        <tr class="">
+          <th scope="row"><strong>Nome de Usuário</strong></th>
+          <td><span class='text-info'><strong> {{  usuario.username }} </strong></span></td>
+        </tr>
+        <tr class="">
+            <th scope="row"><strong>Email</strong></th>
+            <td><span class='text-info'><strong> {{  usuario.email }} </strong></span></td>
+        </tr>
+        <tr class="">
+            <th scope="row"><strong>Primeiro Nome</strong></th>
+            <td><span class='text-info'><strong> {{  usuario.first_name }} </strong></span></td>
+        </tr>
+        <tr class="">
+            <th scope="row"><strong>Sobrenome</strong></th>
+            <td><span class='text-info'><strong> {{  usuario.last_name }} </strong></span></td>
+        </tr>
+        <tr class="">
+            <th scope="row"><strong>Super Usuario</strong></th>
+            {% if  usuario.is_superuser %}
+            <td><span class='text-info'><strong> <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i> </strong></span></td>
+            {% else %}
+            <td><span class='text-info'><strong> <i class="fa fa-minus-circle text-danger" aria-hidden="true"></i> </strong></span></td>
+            {% endif %}
+            
+        </tr>
+      </tbody>
+    </table>
+    <div class="footer text-center">
+        <a href=""><i class="fa fa-pencil btn btn-primary" aria-hidden="true"></i></a>
+        <i class="fa fa-trash-o btn btn-danger" aria-hidden="true"></i>
+        <a href="{% url 'usuario:usuario_list' %}"><i class="fa fa-sign-out btn btn-secondary" aria-hidden="true" data-bs-dismiss="modal"></i></a>
+      </div>
+  </div>
+{% endblock content %}
