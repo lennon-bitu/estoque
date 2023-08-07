@@ -45,6 +45,12 @@
           <input type="text" class="form-control" placeholder="ncm" name='ncm' aria-label="ncm" value="{{ produto.ncm }}" aria-describedby="basic-ncm">
         </div>
         <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-estoquemin"><i class="fa fa-dropbox" aria-hidden="true">Estoque Minimo</i></span>
+          <input type="number" class="form-control" placeholder="Estoque Mínimo" aria-label="estoquemin" name='estoquemin' value='{{produto.estoquemin}}' aria-describedby="basic-estoquemin">
+          <span class="input-group-text" id="basic-estoquemax"><i class="fa fa-dropbox" aria-hidden="true">Saldo Minimo</i></span>
+          <input type="number" class="form-control" placeholder="Estoque Máximo" aria-label="estoquemax" name='estoquemax' value='{{produto.estoquemax}}' aria-describedby="basic-estoquemax">
+        </div>
+        <div class="input-group mb-3">
           <span class="input-group-text" id="basic-saldo"><i class="fa fa-dropbox" aria-hidden="true"></i></span>
           <input type="number" class="form-control" placeholder="saldo" aria-label="saldo" name='saldo' value="{{ produto.saldoestoque }}" aria-describedby="basic-saldo">
           <span class="input-group-text" id="basic-ativo"><i class="fa fa-check-circle-o" aria-hidden="true"><input class="form-control form-check-input" name='ativo' type="checkbox" id="ativo" checked></i></span>

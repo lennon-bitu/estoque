@@ -24,6 +24,8 @@ class Produto(models.Model):
     preco = models.FloatField()
     unidademedida = models.ForeignKey(Unidademedida, on_delete=models.CASCADE)
     ncm = models.CharField(max_length=8)
+    estoquemin = models.IntegerField(default=0)
+    estoquemax = models.IntegerField(default=0)
     saldoestoque = models.CharField(max_length=100)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     datacadastro = models.DateField(auto_now_add=True, auto_now=False)

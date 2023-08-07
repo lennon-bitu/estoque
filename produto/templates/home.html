@@ -36,6 +36,8 @@
             <th scope="col">Unidade de Médida</th>
             <th scope="col">Preço</th>
             <th scope="col">NCM</th>
+            <th scope="col">Estoque Mínimo</th>
+            <th scope="col">Estoque Máximo</th>
             <th scope="col">Saldo Estoque</th>
             <th scope="col">Categoria</th>
             <th scope="col">Data Criação</th>
@@ -53,6 +55,8 @@
             <td>{{  prod.unidademedida  }}</td>
             <td>{{  prod.preco  }}</td>
             <td>{{  prod.ncm  }}</td>
+            <td>{{  prod.estoquemin  }}</td>
+            <td>{{  prod.estoquemax  }}</td>
             <td>{{  prod.saldoestoque  }}</td>
             <td>{{  prod.categoria  }}</td>
             <td>{{  prod.datacadastro  }}</td>
@@ -129,6 +133,14 @@
                         <tr class="">
                           <td scope="row"><strong>NCM: </strong></td>
                           <td><span> {{  prod.ncm  }} </span></td>
+                        </tr>
+                        <tr class="">
+                          <td scope="row"><strong>Estoque Mínimo </strong></td>
+                          <td><span> {{  prod.estoquemin }} </span></td>
+                        </tr>
+                        <tr class="">
+                          <td scope="row"><strong>Estoque Máximo </strong></td>
+                          <td><span> {{  prod.estoquemax  }} </span></td>
                         </tr>
                         <tr class="">
                           <td scope="row"><strong>Saldo Estoque: </strong></td>

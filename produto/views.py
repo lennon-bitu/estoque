@@ -31,6 +31,8 @@ def add(request):
         preco = request.POST.get('preco')
         ncm = request.POST.get('ncm')
         saldo = request.POST.get('saldo')
+        estoquemin = request.POST.get('estoquemin')
+        estoquemax = request.POST.get('estoquemax')
         #faz a busca do nome da unidade de medida e pega seu id para salvar na chave estrangeira no produto
         unidademedida =  request.POST.get('unidademedida')
         uni = Unidademedida.objects.get(nome=unidademedida)
@@ -53,7 +55,7 @@ def add(request):
             return HttpResponse('Codigo Já cadastrado')
         produto = Produto.objects.create(codigo=cod, ean=codbarras, nome=nome,
                                          unidademedida_id=unidademedida, preco=preco,
-                                         ncm=ncm, saldoestoque=saldo, categoria_id=categoria, 
+                                         ncm=ncm,estoquemin=estoquemin, estoquemax= estoquemax, saldoestoque=saldo, categoria_id=categoria, 
                                          ativo=ativo)
         produto.save()
         
@@ -79,6 +81,8 @@ def editar(request, pk):
         preco = float(preco.replace(',', '.'))
         ncm = request.POST.get('ncm')
         saldo = request.POST.get('saldo')
+        estoquemin = request.POST.get('estoquemin')
+        estoquemax = request.POST.get('estoquemax')
         categoria =  request.POST.get('categoria')
         cat = Categoria.objects.get(nome=categoria)
         categoria =  cat.pk
@@ -91,9 +95,9 @@ def editar(request, pk):
         prod = Produto.objects.filter(pk=pk).first()
         if prod:
             produto =  Produto.objects.filter(pk=pk).update(codigo=cod, ean=codbarras, nome=nome,
-                                            unidademedida_id=unidademedida, preco=preco,
-                                            ncm=ncm, saldoestoque=saldo, categoria_id=categoria, 
-                                           ativo=ativo)
+                                         unidademedida_id=unidademedida, preco=preco,
+                                         ncm=ncm,estoquemin=estoquemin, estoquemax= estoquemax, saldoestoque=saldo, categoria_id=categoria, 
+                                         ativo=ativo)
             #produto = Produto.objects.filter(pk=pk)
             #produto.save()
             
