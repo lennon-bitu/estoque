@@ -7,5 +7,6 @@ urlpatterns = [
     path('',v.usuario_list, name='usuario_list'),
     path('<int:pk>/',v.usuario_detail, name='usuario_detail'),
     path('cadastrar',v.cadastro, name='cadastar_usuario'),
+    path('login',v.login, name='login'),
     
 ]

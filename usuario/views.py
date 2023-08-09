@@ -1,8 +1,12 @@
+from hashlib import md5
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
+from django.urls import reverse_lazy
 
 # Create your views here.
+@permission_required('is_staff', login_url=reverse_lazy('usuario:login'))
 def usuario_list(request):
     template_name = 'usuario_list.html'
     user = User.objects.all()
@@ -38,4 +42,19 @@ def cadastro(request):
         
         return HttpResponseRedirect('/usuario/')
     
+    
+def login(request):
+    template_name = 'login.html'
+    if request.method == 'GET':
+        return render(request, template_name)
+    else:
+        usuario = request.POST.get('usuario')
+        senha = request.POST.get('senha')
+        user = User.objects.filter(username=usuario).first()
+        if user and user.username == usuario:
+            return HttpResponse('usuario logado')
+        else:
+            return HttpResponse('usuario não encontrado')
+    
+      
     
