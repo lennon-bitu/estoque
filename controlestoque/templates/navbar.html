@@ -16,14 +16,21 @@
           <li class="nav-item">
             <a class="nav-link text-light" href="#"><i class="fa fa-dropbox" aria-hidden="true">  </i> Estoque </a>
           </li>
+          
+          {% if user.groups.all.0 == 'Admin' %}
           <li class="nav-item">
             <a class="nav-link text-light" href="{% url 'usuario:usuario_list' %}"><i class="fa fa-user" aria-hidden="true"> </i>  Usuários </a>
           </li>
+          {% endif %}
         </ul>
 
         <ul class="navbar-nav justify-content-end col-lg-5 col-md-5"> 
+            {% if not user.is_authenticated %}
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"><i class="fa fa-user btn btn-secondary" aria-hidden="true"> Login </i> </a></li>
-            <li class="nav-item" hidden=true><a href="#" class="nav-link px-2 text-muted"><i class="fa fa-sign-out btn btn-secondary" aria-hidden="true"> logout </i></a></li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <li class="nav-item" ><a href="#" class="nav-link px-2 text-muted"><i class="fa fa-sign-out btn btn-secondary" aria-hidden="true"> logout </i></a></li>
+            {% endif %}
         </ul>
       </div>
     </div>
