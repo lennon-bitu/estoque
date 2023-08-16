@@ -2,6 +2,7 @@ from hashlib import md5
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import permission_required
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
 from django.urls import reverse_lazy
 
@@ -43,7 +44,7 @@ def cadastro(request):
         return HttpResponseRedirect('/usuario/')
     
     
-def login(request):
+def loginSistema(request):
     template_name = 'login.html'
     if request.method == 'GET':
         return render(request, template_name)
@@ -51,10 +52,30 @@ def login(request):
         usuario = request.POST.get('usuario')
         senha = request.POST.get('senha')
         user = User.objects.filter(username=usuario).first()
-        if user and user.username == usuario:
-            return HttpResponse('usuario logado')
+        if user and user.username == usuario and user.check_password(senha):
+            userAuth = authenticate(request, username=usuario, password=senha)
+            if userAuth is not None:
+                if userAuth.is_active:
+                    #return HttpResponse('usuario logado')
+                    login(request,userAuth )
+                    # Redirecione para uma página de sucesso.
+                    return HttpResponseRedirect('/')
+                else:
+                    # Retorna uma mensagem de erro de 'conta desabilitada' .
+                    pass
+            else:
+                # Retorna uma mensagem de erro 'login inválido'.
+                pass
+            
+            #return HttpResponse('usuario logado')
         else:
             return HttpResponse('usuario não encontrado')
+
+def logoutSistema(request):
+    template_name = 'login.html'
+    logout(request)
+    # Redirecione para uma página de sucesso.
+    return render(request, template_name)
     
       
     
