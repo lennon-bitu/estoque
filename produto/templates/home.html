@@ -2,7 +2,7 @@
     {% extends 'base.html' %}
     
     {% block content %}
-  <div class='' style="height: 100px; background-color: #ffffff;">
+  <div class=''>
     <div class='col'>
       <div class="col-md-12 col-sm-12 col-lg-12"><h1 class='text-center text-dark'>PRODUTOS</h1></div>
       <div class="col-md-12 col-sm-12 col-lg-12 mr-3">
@@ -29,18 +29,13 @@
       <table class="table table-light table-striped">
         <thead>
           <tr>
-            <th scope="col">id</th>
             <th scope="col">Código</th>
             <th scope="col">Código de Barras</th>
             <th scope="col">Nome</th>
             <th scope="col">Unidade de Médida</th>
             <th scope="col">Preço</th>
-            <th scope="col">NCM</th>
-            <th scope="col">Estoque Mínimo</th>
-            <th scope="col">Estoque Máximo</th>
             <th scope="col">Saldo Estoque</th>
             <th scope="col">Categoria</th>
-            <th scope="col">Data Criação</th>
             <th scope="col">ativo</th>
             <th scope="col">ação</th>
           </tr>
@@ -48,20 +43,15 @@
         <tbody>
           {% for prod in lista %}
           <tr class="">
-            <td scope=""> {{  prod.id  }} </td>
             <td>{{  prod.codigo  }}</td>
             <td>{{  prod.ean  }}</td>
             <td>{{  prod.nome  }}</td>
             <td>{{  prod.unidademedida  }}</td>
             <td>{{  prod.preco  }}</td>
-            <td>{{  prod.ncm  }}</td>
-            <td>{{  prod.estoquemin  }}</td>
-            <td>{{  prod.estoquemax  }}</td>
             <td>{{  prod.saldoestoque  }}</td>
             <td>{{  prod.categoria  }}</td>
-            <td>{{  prod.datacadastro  }}</td>
             {% if prod.ativo %}
-            <td><i class="fa fa-check-circle-o ok text-success" aria-hidden="true"></i></td>
+            <td><i class="fas fa-check-circle ok text-success" aria-hidden="true"></i></td>
             {% else %}
             <td><i class="fa fa-minus-circle no text-danger" aria-hidden="true"></i></td>
             {% endif %}
@@ -98,7 +88,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title text-info" id="staticBack{{  prod.id  }}">{{  prod.nome  }}</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
           </div>
           <div class="modal-body">
             <div class='container'>
@@ -169,10 +159,12 @@
           </div>
           </div>
           <div class="modal-footer">
-            <a href="{% url 'produto:editar'  prod.id %}"><i class="fa fa-pencil btn btn-primary" aria-hidden="true"></i></a>
-            <a href="{% url 'produto:deletar'  prod.id %}"><i class="fa fa-trash-o btn btn-danger" aria-hidden="true"></i></a>
-            <i class="fa fa-dropbox btn btn-warning" aria-hidden="true"></i>
-            <i class="fa fa-sign-out btn btn-secondary" aria-hidden="true" data-bs-dismiss="modal"></i>
+            <a href="{% url 'produto:editar'  prod.id %}"><i class="fas fa-edit  btn btn-primary" aria-hidden="true"></i></a>
+            <a href="{% url 'produto:deletar'  prod.id %}"  onclick=(confirm('deseja Deletar?');)><i class="fas fa-trash-alt btn btn-danger" aria-hidden="true"></i></a>
+            <i class="fab fa-dropbox btn btn-warning" aria-hidden="true"></i>
+            <a class="btn btn-secondary" href="#" data-bs-dismiss="modal">
+              <i class="fas fa-door-closed" aria-hidden="true"></i>
+            </a>
           </div>
         </div>
       </div>

@@ -1,93 +1,145 @@
-<div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Menu</span>
-                </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
-                    </li>
-                    <li>
-                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-                    </li>
-                </ul>
-                <hr>
-                <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">loser</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
-                </div>
+{% load static %}
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'index' %}">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fab fa-dropbox"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3"><span class="text-warning">Estoque</span> <sup class="text-danger">Plus</sup></div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'index' %}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Cadastros
+    </div>
+
+    <!-- Nav Item - Pages Produto Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProd"
+            aria-expanded="true" aria-controls="collapseProd">
+            <i class="fab fa-dropbox"></i>
+            <span>Produtos</span>
+        </a>
+        <div id="collapseProd" class="collapse" aria-labelledby="headingProd" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Funções</h6>
+                <a class="collapse-item" href="{% url "produto:home" %}">Lista de Produtos</a>
+                <a class="collapse-item" href="{% url "produto:incluir" %}">Cadastrar Produto</a>
+                <a class="collapse-item" href="#">Relatorios</a>
             </div>
         </div>
-        <div class="col py-3">
-            <h3>Left Sidebar with Submenus</h3>
-            <p class="lead">
-                An example 2-level sidebar with collasible menu items. The menu functions like an "accordion" where only a single 
-                menu is be open at a time. While the sidebar itself is not toggle-able, it does responsively shrink in width on smaller screens.</p>
-            <ul class="list-unstyled">
-                <li><h5>Responsive</h5> shrinks in width, hides text labels and collapses to icons only on mobile</li>
-            </ul>
+    </li>
+
+    <!-- Nav Item - Categoria Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsecategoria"
+            aria-expanded="true" aria-controls="collapsecategoria">
+            <i class="fas fa-fw fa-tag"></i>
+            <span>Categoria</span>
+        </a>
+        <div id="collapsecategoria" class="collapse" aria-labelledby="headingCategoria"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Funções</h6>
+                <a class="collapse-item" href="#">Lista de Categoria</a>
+                <a class="collapse-item" href="#">Cadastrar Categoria</a>
+            </div>
         </div>
+    </li>
+
+    <!-- Nav Item - Usuario Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseusuario"
+            aria-expanded="true" aria-controls="collapseusuario">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Usuário</span>
+        </a>
+        <div id="collapseusuario" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Funções Usuário</h6>
+                <a class="collapse-item" href="{% url 'usuario:usuario_list' %}">Lista de Usuarios</a>
+                <a class="collapse-item" href="{% url 'usuario:cadastar_usuario' %}">Cadastrar Usuario</a>
+                <h6 class="collapse-header">Funções Grupos</h6>
+                <a class="collapse-item" href="#">Lista de Grupo Usuarios</a>
+                <a class="collapse-item" href="#">Cadastrar Grupo Usuario</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Financiero
     </div>
-</div>
+
+    <!-- Nav Item - Financiero Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFinanciero"
+            aria-expanded="true" aria-controls="collapseFinanciero">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Financiero</span>
+        </a>
+        <div id="collapseFinanciero" class="collapse" aria-labelledby="headingFinanciero" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Menu</h6>
+                <a class="collapse-item" href="#">Contas a Pagar</a>
+                <a class="collapse-item" href="#">Contas a Receber</a>
+                <a class="collapse-item" href="#">Caixa</a>
+                <div class="collapse-divider"></div>
+                <h6 class="collapse-header">Relatórios</h6>
+                <a class="collapse-item" href="#">contas a pagar</a>
+                <a class="collapse-item" href="#">contas a Receber</a>
+                <a class="collapse-item" href="#">DRE</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Empresa</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Configurações</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+    <!-- Sidebar Message -->
+    <div class="sidebar-card d-none d-lg-flex">
+        <img class="sidebar-card-illustration mb-2" src="{% static 'img/undraw_rocket.svg'%}" alt="...">
+        <p class="text-center mb-2"><strong>Lennon Bitu</strong > Developer</p>
+        <a class="btn btn-info btn-sm" href="https://linkedin.com/in/lennonbitu">Likedin</a>
+    </div>
+
+</ul>
+<!-- End of Sidebar -->

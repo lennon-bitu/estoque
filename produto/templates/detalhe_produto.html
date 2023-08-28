@@ -60,10 +60,13 @@
       </tbody>
     </table>
     <div class="footer text-center">
-      <a href="{% url 'produto:editar'  produto.id %}"><i class="fa fa-pencil btn btn-primary" aria-hidden="true"></i></a>
-      <a href="{% url 'produto:deletar'  produto.id %}"  onclick=(confirm('deseja Deletar?');)><i class="fa fa-trash-o btn btn-danger" aria-hidden="true"></i></a>
-      <i class="fa fa-dropbox btn btn-warning" aria-hidden="true"></i>
-      <i class="fa fa-sign-out btn btn-secondary" aria-hidden="true" data-bs-dismiss="modal"></i>
+      <a href="{% url 'produto:editar'  produto.id %}"><i class="fas fa-edit  btn btn-primary" aria-hidden="true"></i></a>
+      <a href="{% url 'produto:deletar'  produto.id %}"  onclick=(confirm('deseja Deletar?');)><i class="fas fa-trash-alt btn btn-danger" aria-hidden="true"></i></a>
+      <i class="fab fa-dropbox btn btn-warning" aria-hidden="true"></i>
+      <a class="btn btn-secondary" href="{% url 'produto:home' %}">
+        <i class="fas fa-door-closed" aria-hidden="true"></i>
+      </a>
+      
       </div>
   </div>
 {% endblock content %}
